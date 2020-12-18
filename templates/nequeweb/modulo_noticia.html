@@ -1,0 +1,90 @@
+<div id="portfolioSheetWrapper">
+
+    <header id="project">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>{{ noticia.titulo }}</h1>
+                    <p class="date">{{ noticia.fecha|date:"d F, Y" }}</p>
+                </div>
+                <div class="col-md-2">
+                    <a href="javascript:$.pageslide.close()" class="btn pull-right"><i class="icon-cancel-outline"></i>Cerrar</a>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="content">
+
+        <section class="mb15">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        {% if noticia.video %}
+                            <div class="videoWrapper">
+                                {{ noticia.video|safe }}
+                            </div>
+                        {% else %}
+                            {% if noticia.imagen %}
+                            <img src="{{ noticia.imagen.url }}" alt="" class="img-responsive mb30"/>
+                            {% endif %}
+                        {% endif %}
+
+                    </div>
+                    <div class="col-md-6">
+                        {% if noticia.descripcion %}
+                            <p>{{ noticia.descripcion|safe }}</p>
+                        {% else %}  
+                        <p>{{ noticia.descripcion_corta }}</p>
+                        {% endif %}
+                        <div id="shareme" data-url="http://www.ñeque.cl" data-text="Viste la página de Ñeque? "> </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </section>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-md-offset-10">
+                    <a href="javascript:$.pageslide.close()" class="btn pull-right"><i class="icon-cancel-outline"></i>Cerrar</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript">
+    /*
+     |--------------------------------------------------------------------------
+     | SHARRRE
+     |--------------------------------------------------------------------------
+     */
+    if($('#shareme').length){
+
+        $('#shareme').sharrre({
+
+            share: {
+                googlePlus: true,
+                facebook: true,
+                twitter: true,
+                linkedin: true
+            },
+
+            buttons: {
+                googlePlus: {size: 'tall', annotation:'bubble'},
+                facebook: {layout: 'box_count'},
+                twitter: {count: 'vertical'},
+                linkedin: {counter: 'top'}
+            },
+
+            enableHover: false,
+            enableCounter: false,
+            enableTracking: true,
+            //url:'document.location.href'
+        });
+    }
+
+</script>

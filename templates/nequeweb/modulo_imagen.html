@@ -1,0 +1,94 @@
+<div id="portfolioSheetWrapper">
+
+    <header id="project">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>{{ obra }}</h1>
+                    <p class="date">{{ obra.subtitulo }}</p>
+                </div>
+                <div class="col-md-2">
+                    <a href="javascript:$.pageslide.close()" class="btn pull-right"><i class="icon-cancel-outline"></i>Cerrar</a>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="content">
+
+        <section class="mb15">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="{{ obra.imagen_principal.url }}" alt="snowflake premium website template" class="img-responsive mb30"/>
+                        <div id="shareme" data-url="http://www.ñeque.cl" data-text="Viste la página de Ñeque? "> </div>
+                        {% if obra.carpeta %}
+                            <a style="float:right" class="btn btn-lg" title="" href="{{ obra.carpeta.url }}" target="blank">
+                                <i class="icon-download"></i> Descargar Carpeta
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ obra.descripcion|safe }}
+                        {% if obra.cuadernillo %}
+                            <a style="float:right;margin-bottom: 20px;" class="btn btn-lg" title="" href="{{ obra.cuadernillo.url }}" target="blank">
+                                <i class="icon-download"></i> Descargar Cuadernillo
+                            </a>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </section>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-md-offset-10">
+                    <a href="javascript:$.pageslide.close();" class="btn pull-right"><i class="icon-cancel-outline"></i>Cerrar</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript">
+    /*
+     |--------------------------------------------------------------------------
+     | SHARRRE
+     |--------------------------------------------------------------------------
+     */
+    if($('#shareme').length){
+
+        $('#shareme').sharrre({
+
+            share: {
+                googlePlus: true,
+                facebook: true,
+                twitter: true,
+                linkedin: true
+            },
+
+            buttons: {
+                googlePlus: {size: 'tall', annotation:'bubble'},
+                facebook: {layout: 'box_count'},
+                twitter: {count: 'vertical'},
+                linkedin: {counter: 'top'}
+            },
+
+            enableHover: false,
+            enableCounter: false,
+            enableTracking: true,
+            //url:'document.location.href'
+        });
+    }
+
+</script>
